@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(imtodo VERSION 1.0 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Output directories
@@ -61,6 +61,8 @@ target_link_libraries(imtodo
     PRIVATE OpenGL::GL
     PRIVATE X11::X11
 )
+
+target_include_directories(imtodo PRIVATE external/date/include)
 
 target_include_directories(imtodo
     PRIVATE ${CMAKE_SOURCE_DIR}/src
