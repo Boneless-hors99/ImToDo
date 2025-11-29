@@ -80,6 +80,14 @@ void App::Loop()
 {
     ImGuiIO& io = ImGui::GetIO(); (void)io;
 
+    Schedule s;
+
+    using Date = date::year_month_day;
+
+    auto today = floor<date::days>(std::chrono::system_clock::now());
+    Date g_SelectedDate = Date{today};
+    date::year_month g_CurrentMonth = date::year_month_day{today}.year() / date::year_month_day{today}.month();
+
     bool show_demo_window = true;
 
     while (!glfwWindowShouldClose(m_window))
@@ -151,6 +159,9 @@ void App::Loop()
         // --- ImGui Demo Window (shows all widgets & docking) ---
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
+        
+        // Basic calendar rendering with no logic
+        s.RenderCalendar("Calendar", g_CurrentMonth, g_SelectedDate);
 
         // ----------------------------------------------------
         // Rendering

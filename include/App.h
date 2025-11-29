@@ -3,6 +3,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Schedule.h"
+
 class App{
     private:
     GLFWwindow* m_window;
